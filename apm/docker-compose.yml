@@ -1,0 +1,26 @@
+version: "2.2"
+services:
+  # https://www.elastic.co/guide/en/apm/server/current/running-on-docker.html
+  apm-server:
+    image: docker.elastic.co/apm/apm-server:7.1.1
+    build:
+        context: .
+        restart: always
+    container_name: apm-server
+    ports:
+      - 8200:8200
+    networks:
+      - esnet
+    volumes:
+      - "./apm-server.yml:/usr/share/apm-server/apm-server.yml"
+#    depends_on:
+#      es01:
+#        condition: service_healthy
+    command: --strict.perms=false -e  # Avoid the error: "apm-server.yml" can only be writable by the owner.
+
+volumes:
+  esdata:
+    driver: local
+
+networks:
+  esnet:

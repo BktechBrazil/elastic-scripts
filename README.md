@@ -56,7 +56,7 @@ __Ajustando a VM do SO:__
 __Dentro da pasta__ 
 ```
 # cd es
-# docker-compose -d up
+# docker-compose up -d
 ```
 
 __Verificado se o container subiu e se as portas estão operacional__
@@ -87,6 +87,17 @@ _OBS: Caso o passo 5 não tenha sido concluído com sucesso, repetir os passos a
 _Obs: Nesse passo vamos definir senha para os usuários que estão no core do Elasticsearch. Para isso temos que acessar o container que está com a porta 9200 exposta._ 
 ```
 # docker ps 
+``` 
+Resultado do comando deve-se paracer conforme abaixo:
+``` 
+00cf84028d3f        docker.elastic.co/elasticsearch/elasticsearch:7.1.1   "/usr/local/bin/dock…"   8 hours ago         Up 8 hours          9200/tcp, 9300/tcp                 es03
+8b4bb9b55ac7        docker.elastic.co/elasticsearch/elasticsearch:7.1.1   "/usr/local/bin/dock…"   8 hours ago         Up 8 hours          0.0.0.0:9200->9200/tcp, 9300/tcp   es01
+3b67b6d01d1b        docker.elastic.co/elasticsearch/elasticsearch:7.1.1   "/usr/local/bin/dock…"   8 hours ago         Up 8 hours          9200/tcp, 9300/tcp   	          es02
+``` 
+_OBS: Procure algo similar a ``` 0.0.0.0:9200->9200/tcp, 9300/tcp ```, isso carateriza o container que esta com a porta exposta assim o ID do container é __8b4bb9b55ac7___
+
+Agora execute o comando abaixo para acessar o container em questão: 
+``` 
 # docker exec -it <ID_container> /bin/bash 
 ```
 
@@ -129,7 +140,7 @@ elasticsearch.password: "123456"__ coloque a senha que foi definida no passo 7, 
 
 ```
 # cd kb
-# docker-compose -d up 
+# docker-compose up -d 
 ```
 
 __Acesse o kibana via navegador__

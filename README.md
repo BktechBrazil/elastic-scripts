@@ -76,7 +76,7 @@ Outro comando para verificar se o container Elasticsearch está operando e verif
 __Testado se Elasticsearch está funcional__
 
 Abra um navegador e tente acessar o Elasticsearch usando a url: 
-> http://localhost:9200/ 
+> http://<IP_DO_HOST>:9200/ 
 
 Se pedir login e senha use: ``` elastic/123456 ``` a senha esta definida no aquivo docker-compose.yml
 
@@ -144,6 +144,6 @@ elasticsearch.password: "123456"__ coloque a senha que foi definida no passo 7, 
 ```
 
 __Acesse o kibana via navegador__
-> http://localhost:5601
+> http://<IP_DO_HOST>:5601
  
 Se pedir login e senha use: ``` elastic/123456 ``` a senha esta definida no aquivo docker-compose.yml

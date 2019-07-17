@@ -251,3 +251,15 @@ PUT /publicacao/_doc/f626258?routing=562054&pipeline=attachment
 }
 
 GET /publicacao/_search
+
+
+# Para executar o CURL de ingestão dos arquivos Bulk 
+
+curl -XPOST -v -u elastic:123456 "http://elk-search:9200/_bulk" --data-binary @bulk_pai.json -H "Content-Type: application/json"
+curl -XPOST -v -u elastic:123456 "http://elk-search:9200/_bulk" --data-binary @file_part1_bulk.json -H "Content-Type: application/json"
+curl -XPOST -v -u elastic:123456 "http://elk-search:9200/_bulk" --data-binary @file_part2_bulk.json -H "Content-Type: application/json"
+curl -XPOST -v -u elastic:123456 "http://elk-search:9200/_bulk" --data-binary @file_part2_bu3k.json -H "Content-Type: application/json"
+curl -XPOST -v -u elastic:123456 "http://elk-search:9200/_bulk" --data-binary @file_part3_bulk.json -H "Content-Type: application/json"
+
+
+
